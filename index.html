@@ -85,6 +85,12 @@
   .peer .row{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
   .logo-chip{font-weight:700;letter-spacing:-0.5px;font-size:18px;display:inline-flex;align-items:center;gap:8px}
   .logo-chip .swatch{width:10px;height:10px;border-radius:2px}
+  /* Brand logo chips (renders varied vendor logos readably on a dark page) */
+  .brand-logo{display:inline-flex;align-items:center;justify-content:center;background:#fff;border-radius:8px;padding:8px 14px;min-height:38px;box-shadow:0 2px 8px rgba(0,0,0,.25);overflow:hidden}
+  .brand-logo img{display:block;max-height:22px;width:auto;object-fit:contain}
+  .brand-logo.lg{padding:12px 18px;min-height:56px}
+  .brand-logo.lg img{max-height:32px}
+  .case .topline-logo{display:flex;justify-content:space-between;align-items:center;margin:0 0 14px}
   .peer .industry{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#9fb6c9}
   .peer h3{font-size:24px;line-height:1.2;margin:6px 0 14px;letter-spacing:-0.4px}
   .peer ul{margin:0;padding-left:18px;color:#dbe3ef;font-size:15.5px}
@@ -261,7 +267,9 @@
       <!-- ABN AMRO -->
       <div class="peer">
         <div class="row">
-          <div class="logo-chip"><span class="swatch" style="background:#009286"></span> ABN AMRO Bank N.V.</div>
+          <span class="brand-logo lg" aria-label="ABN AMRO Bank N.V.">
+            <img src="https://cdn.oreillystatic.com/oreilly/images/awards-2025/logo_abn_amro.svg" alt="ABN AMRO Bank N.V.">
+          </span>
           <div class="industry">Banking · Europe</div>
         </div>
         <h3>2025 O'Reilly Awards Gold Winner, Reskilling and Upskilling Transformation</h3>
@@ -277,7 +285,9 @@
       <!-- Aviva -->
       <div class="peer">
         <div class="row">
-          <div class="logo-chip"><span class="swatch" style="background:#FFD600"></span> Aviva</div>
+          <span class="brand-logo lg" aria-label="Aviva">
+            <img src="https://cdn.oreillystatic.com/oreilly/images/awards-2024/logo_aviva.svg" alt="Aviva">
+          </span>
           <div class="industry">Insurance · UK</div>
         </div>
         <h3>Named best data academy and skills development programme</h3>
@@ -307,7 +317,12 @@
     <div class="case-grid">
 
       <article class="case">
-        <div class="topline"><span>Tavant</span><span>Cloud · Engineering</span></div>
+        <div class="topline-logo">
+          <span class="brand-logo" aria-label="Tavant">
+            <img src="https://cdn.oreillystatic.com/oreilly/images/awards-2025/logo_tavant.png" alt="Tavant">
+          </span>
+          <span class="industry">Cloud · Engineering</span>
+        </div>
         <div class="name">Scaling cloud expertise across the org</div>
         <p class="head">From 259 to 1,046 certified associates in a single year.</p>
         <div class="metrics">
@@ -320,7 +335,12 @@
       </article>
 
       <article class="case">
-        <div class="topline"><span>Leidos</span><span>Defense · Tech</span></div>
+        <div class="topline-logo">
+          <span class="brand-logo" aria-label="Leidos">
+            <img src="https://cdn.oreillystatic.com/oreilly/images/awards-2023/logo_leidos.svg" alt="Leidos">
+          </span>
+          <span class="industry">Defense · Tech</span>
+        </div>
         <div class="name">Retain talent. Save millions.</div>
         <p class="head">A 4% retention bump avoided losing 208 high value technical staff.</p>
         <div class="metrics">
@@ -333,7 +353,12 @@
       </article>
 
       <article class="case">
-        <div class="topline"><span>Maya Philippines</span><span>Fintech · Operations</span></div>
+        <div class="topline-logo">
+          <span class="brand-logo" aria-label="Maya Philippines">
+            <img src="https://cdn.oreillystatic.com/oreilly/images/awards-2024/logo_maya.svg" alt="Maya Philippines">
+          </span>
+          <span class="industry">Fintech · Operations</span>
+        </div>
         <div class="name">Onboarding as a strategic advantage</div>
         <p class="head">Cut onboarding time by 40% and retired costly instructor led programmes.</p>
         <div class="metrics">
@@ -346,7 +371,12 @@
       </article>
 
       <article class="case">
-        <div class="topline"><span>Medidata</span><span>Healthcare · Life Sciences</span></div>
+        <div class="topline-logo">
+          <span class="brand-logo" aria-label="Medidata">
+            <img src="https://cdn.oreillystatic.com/oreilly/images/awards-2025/logo_medidata.svg" alt="Medidata">
+          </span>
+          <span class="industry">Healthcare · Life Sciences</span>
+        </div>
         <div class="name">Consolidate vendors. Multiply impact.</div>
         <p class="head">A single platform across engineering, ops, and sales, eliminating duplicate spend.</p>
         <div class="metrics">
@@ -372,7 +402,12 @@
     <div class="case-grid">
 
       <article class="case">
-        <div class="topline"><span>SportingTech</span><span>Sports Tech · Regulated</span></div>
+        <div class="topline-logo">
+          <span class="brand-logo" aria-label="SportingTech">
+            <img src="https://cdn.oreillystatic.com/oreilly/images/awards-2024/logo_sportingtech.jpg" alt="SportingTech">
+          </span>
+          <span class="industry">Sports Tech · Regulated</span>
+        </div>
         <div class="name">An adaptive workforce, end to end</div>
         <p class="head">Continuous learning across engineering, product, and delivery, recognised at the O'Reilly Awards 2024.</p>
         <div class="metrics">
@@ -384,7 +419,12 @@
       </article>
 
       <article class="case">
-        <div class="topline"><span>Adyen</span><span>Payments · Highly regulated</span></div>
+        <div class="topline-logo">
+          <span class="brand-logo" aria-label="Adyen">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a2/Adyen_Corporate_Logo.svg" alt="Adyen">
+          </span>
+          <span class="industry">Payments · Highly regulated</span>
+        </div>
         <div class="name">Stay competitive in a fast evolving market</div>
         <p class="head">Accelerate technical excellence, reduce time to competency, and future proof the workforce.</p>
         <div class="metrics">
