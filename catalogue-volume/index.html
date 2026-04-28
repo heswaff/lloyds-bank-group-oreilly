@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>O’Reilly catalogue volume – Engineering, Data, and AI – Lloyds Banking Group</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d1320;
+    --bg-2: #121926;
+    --surface: #161e2e;
+    --surface-2: #1c2538;
+    --line: rgba(255,255,255,.10);
+    --line-strong: rgba(255,255,255,.22);
+    --text: #ffffff;
+    --muted: #c7cdd8;
+    --soft: #9aa3b2;
+    --oreilly: #d6232c;
+    --lloyds: #006a4d;
+    --lloyds-2: #00875f;
+    --mint: #7ee0bf;
+    --accent: #2563ea;
+    --gradient: linear-gradient(120deg,#0d3a2e 0%,#0d1320 35%,#0d1320 65%,#1a2a4a 100%);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:"Instrument Sans",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.45}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:rgba(255,255,255,.08);padding:1px 6px;border-radius:4px;font-size:.92em;color:var(--mint)}
+
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#cfd6e4;background:rgba(255,255,255,.06);border:1px solid var(--line);padding:8px 14px;border-radius:999px}
+  .eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--lloyds-2);box-shadow:0 0 0 4px rgba(0,135,95,.18)}
+  .pill{display:inline-block;background:rgba(255,255,255,.06);border:1px solid var(--line);color:#cfd6e4;padding:5px 10px;border-radius:999px;font-size:12px;letter-spacing:.04em}
+
+  /* Top bar */
+  header.top{position:sticky;top:0;z-index:30;background:rgba(13,19,32,.85);backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid var(--line)}
+  .top-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:18px;flex-wrap:wrap}
+  .brand{display:flex;align-items:center;gap:18px;font-weight:600}
+  .or-logo, .lloyds-logo{display:inline-flex;align-items:center;line-height:0}
+  .or-logo svg{display:block;height:26px;width:auto}
+  .lloyds-logo svg{display:block}
+  .brand .x{opacity:.35;font-size:18px}
+  .top .meta{font-size:13px;color:var(--soft)}
+
+  /* Hero */
+  .hero{position:relative;overflow:hidden;background:var(--gradient);border-bottom:1px solid var(--line)}
+  .hero::before{content:"";position:absolute;inset:-20% -10% auto auto;width:60%;height:120%;background:radial-gradient(closest-side,rgba(0,135,95,.35),transparent 70%);filter:blur(20px);pointer-events:none}
+  .hero::after{content:"";position:absolute;inset:auto auto -30% -10%;width:55%;height:90%;background:radial-gradient(closest-side,rgba(37,99,234,.30),transparent 70%);filter:blur(24px);pointer-events:none}
+  .hero-inner{position:relative;padding:96px 0 80px;text-align:center}
+  .hero h1{font-size:clamp(38px,5.6vw,72px);line-height:1.05;letter-spacing:-1.4px;margin:18px auto 16px;font-weight:700;max-width:18ch}
+  .hero h1 .accent{background:linear-gradient(90deg,#7ee0bf 0%,#3fa07a 60%,#fff 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p.lede{font-size:clamp(16px,1.5vw,20px);color:#dde3ee;max-width:760px;margin:0 auto 28px}
+  .hero .pills{margin-top:22px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+
+  /* Stats strip */
+  .stats{background:var(--bg-2);border-bottom:1px solid var(--line)}
+  .stats .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;padding:36px 0}
+  .stat{padding:18px 24px;border-right:1px solid var(--line);text-align:center}
+  .stat:last-child{border-right:none}
+  .stat .v{font-size:clamp(32px,3.6vw,48px);font-weight:700;letter-spacing:-1px;line-height:1;color:var(--mint)}
+  .stat .l{margin-top:10px;font-size:14px;color:var(--muted);letter-spacing:.02em}
+  @media (max-width:900px){.stats .grid{grid-template-columns:repeat(2,1fr)} .stat{border-bottom:1px solid var(--line)} .stat:nth-child(2){border-right:none}}
+
+  /* Tab nav */
+  nav.tabs{position:sticky;top:62px;z-index:20;background:rgba(13,19,32,.92);backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid var(--line)}
+  .tabs-inner{display:flex;flex-wrap:wrap;gap:0}
+  .tab-btn{background:none;border:none;border-bottom:2px solid transparent;padding:18px 18px;font-family:inherit;font-weight:600;font-size:14px;color:var(--soft);cursor:pointer;letter-spacing:.02em;transition:color .15s, border-color .15s}
+  .tab-btn:hover{color:#fff}
+  .tab-btn.active{color:#fff;border-bottom-color:var(--mint)}
+
+  /* Sections */
+  main{padding:64px 0 96px}
+  .tab-panel{display:none;padding-bottom:48px}
+  .tab-panel.active{display:block;animation:fade .25s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+  .panel-head{margin-bottom:28px;max-width:880px}
+  .kicker{display:inline-block;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--lloyds-2);font-weight:600;margin-bottom:8px}
+  .kicker.green{color:var(--mint)}
+  .panel-head h2{font-size:clamp(28px,3.2vw,42px);letter-spacing:-1px;margin:0 0 14px;font-weight:700;line-height:1.12}
+  .panel-head .lede-muted{color:var(--muted);font-size:17px;margin:0;line-height:1.5}
+  .hint{display:inline-block;margin-left:6px;padding:2px 10px;background:rgba(126,224,191,.12);color:var(--mint);border:1px solid rgba(126,224,191,.32);border-radius:999px;font-size:12px;font-weight:600;letter-spacing:.04em}
+  .footnote{color:var(--soft);font-size:13px;font-style:italic;max-width:880px;margin:18px 0 0}
+
+  /* Callout */
+  .callout{margin-top:40px;padding:28px 32px;border-radius:16px;background:linear-gradient(180deg,#0e1e1a 0%,#101725 100%);border:1px solid rgba(0,135,95,.35)}
+  .callout h3{font-size:22px;margin:0 0 8px;letter-spacing:-0.3px;color:#fff;font-weight:700}
+  .callout p{margin:0;color:var(--muted);font-size:15.5px;line-height:1.55}
+
+  /* Table controls */
+  .table-controls{display:flex;gap:14px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+  .bulk-toggle{background:rgba(255,255,255,.04);border:1px solid var(--line-strong);color:#fff;padding:8px 14px;border-radius:8px;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;transition:background .15s,border-color .15s}
+  .bulk-toggle:hover{background:rgba(126,224,191,.10);border-color:var(--mint);color:var(--mint)}
+  .table-hint-row{margin-bottom:10px}
+  .table-hint{color:var(--soft);font-size:13px;font-style:italic;line-height:1.4}
+  .table-hint code{font-style:normal}
+
+  /* Tables */
+  .table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+  table.data-table{width:100%;border-collapse:collapse;font-size:13.5px}
+  table.data-table th{background:var(--surface-2);color:#fff;font-weight:600;text-align:left;padding:14px 14px;font-size:12px;letter-spacing:.04em;text-transform:uppercase;border-bottom:1px solid var(--line);white-space:nowrap;position:relative}
+  table.data-table th.num{text-align:center}
+  table.data-table th.sortable{cursor:pointer;user-select:none;transition:color .12s}
+  table.data-table th.sortable:hover{color:var(--mint)}
+  table.data-table th .sort-icon{display:inline-block;width:10px;margin-left:4px;opacity:.4;font-size:9px}
+  table.data-table th.sort-asc .sort-icon::after{content:"▲";opacity:1;color:var(--mint)}
+  table.data-table th.sort-desc .sort-icon::after{content:"▼";opacity:1;color:var(--mint)}
+
+  /* Tooltip on column header */
+  table.data-table th[data-tooltip]{cursor:help}
+  table.data-table th[data-tooltip]:hover::before{content:attr(data-tooltip);position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:#0a0f1a;color:#fff;padding:10px 14px;border-radius:8px;font-weight:400;font-size:12px;letter-spacing:0;text-transform:none;white-space:normal;width:300px;z-index:40;box-shadow:0 10px 30px rgba(0,0,0,.5);text-align:left;border:1px solid var(--line-strong);line-height:1.45}
+  table.data-table th[data-tooltip]:hover::after{content:"";position:absolute;bottom:100%;left:50%;transform:translateX(-50%);border:6px solid transparent;border-top-color:#0a0f1a;z-index:40}
+
+  table.data-table td{padding:13px 14px;border-bottom:1px solid var(--line);vertical-align:middle;color:#e6ebf2}
+  table.data-table td.num{text-align:center;font-variant-numeric:tabular-nums}
+  table.data-table td.row-label{font-weight:600;color:#fff}
+  table.data-table tbody tr:nth-child(even) td{background:rgba(255,255,255,.018)}
+  table.data-table tbody tr:hover td{background:rgba(126,224,191,.06)}
+  table.data-table tr.total-row td{background:rgba(0,135,95,.18) !important;font-weight:700;border-top:2px solid var(--lloyds-2);color:#fff}
+  table.data-table tr.parent-row td{background:rgba(255,255,255,.04);font-weight:600}
+  table.data-table tr.parent-row td.parent-label{color:var(--mint)}
+  table.data-table tr.child-row td{background:transparent;font-size:12.5px;color:var(--muted)}
+  table.data-table tr.child-row td.child-label{padding-left:30px;color:#dbe3ef}
+  table.data-table tr.child-row.hidden{display:none}
+  table.data-table tbody tr:last-child td{border-bottom:none}
+  table.data-table .dash{color:#5b6678}
+
+  .toggle-cell{width:46px;text-align:center;padding:0 !important}
+  .toggle-btn{width:26px;height:26px;border-radius:6px;border:1px solid var(--line-strong);background:rgba(255,255,255,.04);color:var(--mint);font-weight:700;font-size:14px;cursor:pointer;line-height:1;padding:0;transition:background .12s,border-color .12s}
+  .toggle-btn:hover{background:rgba(126,224,191,.12);border-color:var(--mint)}
+
+  table.modality-table td{vertical-align:top;padding:16px}
+  table.modality-table td.row-label{width:240px;color:#fff;font-weight:600}
+  table.modality-table td.def-cell{color:var(--muted);font-size:14px;line-height:1.55}
+
+  /* Cert grid */
+  .cert-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  @media (max-width:900px){.cert-grid{grid-template-columns:1fr}}
+  .cert-card{padding:28px;border-radius:16px;background:#161e2e;border:1px solid var(--line)}
+  .cert-card h3{font-size:20px;margin:6px 0 18px;font-weight:700;letter-spacing:-0.3px}
+  .cert-card .table-wrap{background:var(--surface-2)}
+
+  /* Academies */
+  .academy-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  @media (max-width:900px){.academy-grid{grid-template-columns:1fr}}
+  .academy-card{position:relative;padding:32px;border-radius:16px;background:linear-gradient(180deg,#1a2640 0%,#121929 100%);border:1px solid var(--line-strong);overflow:hidden}
+  .academy-card::before{content:"";position:absolute;inset:auto -30% -50% auto;width:80%;height:120%;background:radial-gradient(closest-side,rgba(126,224,191,.18),transparent 70%);pointer-events:none}
+  .academy-card .row{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:12px}
+  .academy-card .logo-chip{font-weight:700;letter-spacing:-0.3px;font-size:18px;display:inline-flex;align-items:center;gap:10px;color:#fff}
+  .academy-card .logo-chip .swatch{width:10px;height:10px;border-radius:2px}
+  .academy-card .industry{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#9fb6c9}
+  .academy-card p{font-size:15px;color:#dbe3ef;margin:0 0 18px;line-height:1.55}
+  .academy-card ul{margin:0;padding-left:18px;color:#dbe3ef;font-size:14.5px}
+  .academy-card ul li{margin:7px 0}
+
+  /* Footer */
+  footer{background:#0a0f1a;border-top:1px solid var(--line);padding:28px 0;color:var(--soft);font-size:13px}
+  .foot{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
+
+  @media (max-width:720px){
+    .top-inner{padding:12px 0}
+    .top .meta{display:none}
+    nav.tabs{top:60px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+    .tabs-inner{flex-wrap:nowrap;white-space:nowrap}
+    .tab-btn{white-space:nowrap;padding:14px 14px}
+    main{padding:36px 0 64px}
+  }
+
+  @media print{
+    nav.tabs,.table-controls,.toggle-btn,.toggle-cell,.hint,header.top{display:none !important}
+    body{background:#fff;color:#000}
+    .hero,.stats,.callout,.cert-card,.academy-card,.table-wrap{background:#fff !important;color:#000 !important;border-color:#ccc !important}
+    .tab-panel{display:block !important;page-break-before:always}
+    .tab-panel:first-of-type{page-break-before:auto}
+    table.data-table tr.child-row.hidden{display:table-row !important}
+    table.data-table th{background:#eee !important;color:#000 !important}
+    table.data-table td{color:#000 !important}
+    table.data-table tr.total-row td{background:#f4f4f4 !important;color:#000 !important}
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap top-inner">
+    <div class="brand">
+      <span class="or-logo" aria-label="O’Reilly"><svg height="26" viewBox="0 0 385 67" width="150" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><g fill="#fff"><path d="m193.6 12.3v-10.5h-44.1v63.3h44.1v-10.5h-33.5v-15.9h31.8v-10.5h-31.8v-15.9z"/><path d="m226.2 65.1v-63.3h10.6v52.8h30.5v10.5z"/><path d="m275.9 65.1v-63.3h10.5v52.8h30.5v10.5z"/><path d="m204.6 1.8h10.6v63.3h-10.6z"/><path d="m17.7 17.9c-4.1 4.1-6.6 9.7-6.6 15.9s2.5 11.8 6.6 15.9 9.7 6.6 15.9 6.6 11.8-2.5 15.9-6.6c4-4.2 6.5-9.7 6.5-15.9s-2.5-11.8-6.6-15.9-9.7-6.6-15.9-6.6-11.7 2.5-15.8 6.6m-17.1 15.9c0-18.2 14.8-33 33-33s33 14.8 33 33-14.8 33-33 33c-18.3-.1-33-14.8-33-33m98.6-5.6v-15.9h21.3c4.4 0 7.9 3.5 7.9 7.9s-3.5 7.9-7.9 7.9h-21.3zm26.5 9.8c7.6-2.3 13.2-9.3 13.2-17.7 0-10.2-8.3-18.5-18.5-18.5h-31.8v63.3h10.6v-26.4h14.7l15.9 26.4h12.3zm-44.6-29.5c0 4.3-3.5 7.8-7.8 7.8s-7.8-3.5-7.8-7.8 3.5-7.8 7.8-7.8c4.4.1 7.8 3.5 7.8 7.8"/><path d="m363.9 1.8h-12.8l-16.2 23.5-16.3-23.5h-12.8l23.8 34.4v28.9h10.5v-28.8z"/><g transform="translate(368)"><path d="m8.4 14.8c-3.6 0-6.6-2.9-6.6-6.6 0-3.6 2.9-6.6 6.6-6.6 3.6 0 6.6 2.9 6.6 6.6 0 3.6-2.9 6.6-6.6 6.6m0-14.4c-4.3 0-7.8 3.5-7.8 7.8s3.5 7.8 7.8 7.8 7.8-3.5 7.8-7.8-3.5-7.8-7.8-7.8"/><path d="m6.5 5.5h3.1c.6 0 1 .4 1 1s-.4 1-1 1h-3.1zm5.4 1c0-1.3-1-2.3-2.3-2.3h-4.4v8h1.3v-3.3h2.2l1.6 3.3h1.5l-1.6-3.4c1-.3 1.7-1.2 1.7-2.3z"/></g></g></svg></span>
+      <span class="x">×</span>
+      <span class="lloyds-logo" aria-label="Lloyds Banking Group"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" height="34" viewBox="0 0 180 50" width="122"><g><path d="M12.4865 48.6864L11.4788 47.9726C11.0445 42.8716 9.46354 39.7901 8.61225 38.1884C9.51566 37.5965 11.0097 36.2212 11.0097 34.2539C11.0097 32.2866 9.41142 31.2421 9.41142 28.8047C9.41142 27.4642 9.86312 26.3326 10.6102 25.4621C10.1237 24.7657 9.5504 24.4001 8.71649 24.4001C7.77834 24.4001 6.92706 25.1836 6.92706 26.3674C6.92706 27.0638 7.2224 27.8298 7.88258 28.1606C7.4135 28.8047 6.21476 28.8744 5.55458 27.8995H5.5372C5.5372 30.2323 8.00419 31.8514 8.00419 34.3235C8.00419 35.9252 6.73595 37.4747 4.8944 37.4747C3.52192 37.4747 2.23631 36.8305 1.57613 35.5596C3.07022 35.9426 4.14735 35.3507 4.14735 34.0276C4.14735 31.6077 0.134155 29.2574 0.134155 25.1488C0.134155 21.928 2.60114 20.1348 5.43297 20.1348C8.00419 20.1348 10.2974 21.3187 12.0174 24.3131C12.9034 23.6515 13.9806 23.2685 15.0751 23.0596C18.0111 22.4851 21.6247 23.0074 24.3871 21.8235C25.6206 21.3013 26.6456 20.3611 26.6456 19.2992C26.6456 18.7943 26.3502 18.4809 25.9333 18.4809C25.7248 18.4809 25.4121 18.5854 25.221 19.038C24.6824 18.568 24.5087 18.0631 24.5087 17.5756C24.5087 16.74 24.7693 16.357 25.0646 15.9566C24.7867 15.2428 23.9354 15.0687 23.3447 15.7825C22.6324 14.4593 23.0667 12.6313 24.9256 12.0742V12.0568C22.7366 11.6912 22.1633 10.3333 22.4065 8.83608C22.615 9.01017 22.8409 9.13204 23.0841 9.13204C23.4489 9.13204 23.6574 8.83608 23.6574 8.41825C23.6574 7.98301 23.4315 7.28663 22.3023 6.52062C23.2926 5.0234 25.0125 4.79708 25.8812 5.35418L25.8985 5.33677C25.4642 4.72744 25.2384 3.66546 25.9333 2.60349C26.107 2.84722 26.5066 3.178 27.1147 3.178C28.9388 3.178 29.0083 1.17591 30.3982 0.966996C30.3113 1.59374 30.485 2.46421 31.2495 2.46421C32.2571 2.46421 32.7262 0.932177 32.9868 -0.00793457C33.4211 0.235798 33.7512 0.671035 33.6817 1.47187H33.6991L34.3071 0.235798C34.811 0.671035 34.9152 1.38482 34.7415 2.02897C34.7067 2.20307 34.6372 2.32493 34.6372 2.41198C34.6372 2.89945 36.0966 3.26505 36.0966 4.34443C36.0966 4.51853 36.0445 4.72744 35.9576 4.93636L39.2759 9.13204C39.4843 9.39318 39.5538 9.67173 39.5538 9.91546C39.5538 10.7859 38.7894 11.7086 37.6949 11.7086C36.6004 11.7086 36.2356 11.1167 36.1661 10.8382L33.2821 9.428C33.1084 9.70655 32.9173 10.1592 32.9173 10.6815C32.9173 13.8674 37.4169 13.9545 38.4941 18.1153L42.9416 16.6355C46.1209 19.7344 49.4739 22.7462 51.5587 23.9823L52.879 25.6536H48.9006V24.4872L47.8061 24.1912C46.1382 21.5624 43.8624 20.1174 42.6462 19.7518C41.1695 20.6571 40.0576 21.5972 38.7547 23.0422C40.8742 22.8681 43.2369 23.077 45.2175 23.46L44.1751 32.3737L43.3238 34.6543L41.0827 36.5694V32.6348H42.2814L41.9513 31.3813C42.9242 28.7699 43.0632 27.029 43.0632 26.0889C43.0632 25.7929 43.0458 25.5144 42.959 25.4273C42.8721 25.3403 42.5246 25.4273 42.2293 25.5144C41.4301 25.7407 40.1098 26.3674 38.4246 27.7254C36.8957 28.9788 36.0792 29.5359 34.0118 29.3096C31.6838 31.7295 26.7672 32.8786 22.4587 32.8263C22.1286 36.3256 18.2543 38.3451 18.2543 40.0164C18.2543 40.6084 18.8277 41.5833 20.0612 43.4461C21.451 45.5178 22.754 47.5199 24.3871 48.1641L25.7769 49.8528H21.7811L21.7463 48.6515L20.6171 48.0248C19.3141 45.6049 17.2815 42.9586 14.5017 40.4691C15.1793 39.1111 15.5441 37.7184 15.5615 36.4127C14.3106 38.3103 12.4691 38.3277 12.139 39.7727C12.0174 40.3124 12.0869 41.357 12.3822 42.7149C12.8166 44.7692 13.1988 47.2066 15.0924 48.1467L16.4128 49.8702H12.4865V48.6864Z" fill="#fff"></path><path d="M5.60667 21.2664C6.44058 21.2664 7.60458 21.4579 8.42112 22.224C6.4927 21.3361 3.60876 21.928 3.40028 24.2609C3.07019 23.8953 2.96595 23.46 2.9312 23.077C2.2189 23.4078 1.68034 24.4001 1.54135 25.4795C0.968038 22.9203 3.03544 21.2664 5.60667 21.2664ZM16.3085 24.0345C18.984 23.7038 22.6324 23.9997 25.6205 22.5199C27.0104 21.8235 28.435 20.6571 28.435 19.0903C28.435 17.1926 26.107 15.3298 26.107 11.2908C26.107 8.66198 27.271 5.63274 30.346 3.97884C28.4002 5.66756 27.4621 7.60001 27.4621 9.96769C27.4621 12.3354 28.3829 14.8249 31.51 16.061C33.7164 16.9315 35.7838 16.9663 36.6699 18.8117C35.8881 18.185 34.8804 17.9761 34.1855 17.9761C29.6859 17.9761 28.0007 26.4022 22.7192 28.7873C23.8311 25.8625 20.4607 24.9224 17.3509 24.9921C14.8144 25.0443 10.9229 25.7407 10.8881 29.7623C10.1584 27.0812 11.7046 24.6091 16.3085 24.0345ZM37.1042 10.3855C37.1042 10.1418 37.2432 9.74137 37.2432 9.41059C37.2432 9.2365 37.2084 9.01017 36.9826 8.66198C36.6699 8.17452 36.0618 7.33886 35.4711 6.71212C34.6893 5.89388 34.0118 5.65015 32.9694 5.73719C33.8207 5.26714 34.0291 4.81449 34.0291 4.32703C34.0291 3.89179 33.7859 3.43914 33.4037 3.00391C33.9596 3.10836 35.4364 3.71769 35.4364 4.51853C35.4364 4.69263 35.3495 4.8319 35.1931 5.006L38.7546 9.46282C38.633 9.65433 38.3551 9.56728 38.1118 9.56728C37.9555 9.56728 37.8686 9.67173 37.8686 9.82842C37.8686 10.1244 38.1118 10.5074 38.2508 10.7163C38.1466 10.7859 37.9381 10.873 37.7122 10.873C37.4169 10.8556 37.1042 10.7511 37.1042 10.3855Z" fill="#7ee0bf"></path><path d="M60.3669 30.6327V13.9893C60.3669 13.0666 60.141 11.9872 59.8283 10.6641H65.1792C64.8665 11.9872 64.6407 13.0492 64.6407 13.9893V30.1627H70.4954C72.4586 30.1627 73.6921 30.0756 74.9951 29.71L73.6747 33.9579H59.8283C60.141 32.6174 60.3669 31.5554 60.3669 30.6327Z" fill="#fff"></path><path d="M77.6358 30.6327V13.9893C77.6358 13.0666 77.4099 11.9872 77.0972 10.6641H82.4481C82.1354 11.9872 81.9096 13.0492 81.9096 13.9893V30.1627H87.7643C89.7275 30.1627 90.961 30.0756 92.264 29.71L90.9436 33.9579H77.0972C77.4099 32.6174 77.6358 31.5554 77.6358 30.6327Z" fill="#fff"></path><path d="M92.8373 22.2936C92.8373 15.6432 97.7018 10.3507 104.703 10.3507C111.705 10.3507 116.569 15.6258 116.569 22.2936C116.569 28.9614 111.705 34.2365 104.703 34.2365C97.7018 34.2365 92.8373 28.9614 92.8373 22.2936ZM112.26 22.2936C112.26 17.4886 109.411 14.1808 104.703 14.1808C99.995 14.1808 97.1458 17.506 97.1458 22.2936C97.1458 27.0812 99.995 30.4064 104.703 30.4064C109.411 30.4064 112.26 27.0986 112.26 22.2936Z" fill="#fff"></path><path d="M125.082 25.3229C121.52 21.6843 118.428 16.74 116.864 10.6467H121.781C121.85 11.6912 122.042 12.6488 122.441 13.7804C123.553 16.9837 125.256 19.6648 127.201 21.928C129.199 19.7518 131.058 16.9837 132.17 13.7804C132.57 12.6662 132.743 11.6912 132.83 10.6467H137.591C136.027 16.7226 132.935 21.6843 129.373 25.3229V33.9405H125.099L125.082 25.3229Z" fill="#fff"></path><path d="M141.048 30.6327V13.9893C141.048 13.0666 140.822 11.9872 140.509 10.6641H148.362C155.815 10.6641 160.523 15.4343 160.523 22.311C160.523 29.1877 155.815 33.9579 148.362 33.9579H140.509C140.839 32.6174 141.048 31.5554 141.048 30.6327ZM156.197 22.2936C156.197 17.2448 153.331 14.4593 148.067 14.4593H145.322V30.1453H148.067C153.331 30.1453 156.197 27.3597 156.197 22.2936Z" fill="#fff"></path><path d="M163.442 32.6348L163.372 27.9691C166.326 29.8841 168.289 30.7546 170.599 30.7546C173.205 30.7546 174.891 29.7274 174.891 27.8646C174.891 26.6285 174.178 25.671 171.833 24.7135L168.098 23.2163C164.658 21.8409 163.112 19.9259 163.112 16.9489C163.112 12.9099 166.256 10.3681 171.086 10.3681C173.622 10.3681 176.003 11.1689 177.375 11.8305V16.3047C174.769 14.5638 172.841 13.8674 170.877 13.8674C168.445 13.8674 167.229 14.8249 167.229 16.3047C167.229 17.7671 167.993 18.5157 169.835 19.2818L174.526 21.1968C177.253 22.2936 179.043 24.2957 179.043 27.3423C179.043 31.3291 175.933 34.2713 170.408 34.2713C167.507 34.2365 164.988 33.3138 163.442 32.6348Z" fill="#fff"></path><path d="M60.3842 48.4252V41.1132C60.3842 40.7128 60.28 40.2428 60.141 39.6508H64.189C66.1348 39.6508 67.3161 40.6606 67.3161 42.2275C67.3161 43.185 66.8123 44.0554 65.8915 44.5603C67.0034 44.9607 67.6462 45.8486 67.6462 46.9454C67.6462 48.6864 66.4648 49.8702 64.2063 49.8702H60.1584C60.2974 49.3131 60.3842 48.8431 60.3842 48.4252ZM63.9457 43.951C64.9534 43.951 65.4398 43.4113 65.4398 42.5756C65.4398 41.7574 64.8839 41.2699 63.9979 41.2699H62.2605V43.951H63.9457ZM65.7699 46.8758C65.7699 45.9879 65.1271 45.483 64.1542 45.483H62.2605V48.2685H64.2411C65.2487 48.2685 65.7699 47.7637 65.7699 46.8758Z" fill="#fff"></path><path d="M69.1577 48.2511L72.0937 39.6508H74.5955L77.5315 48.2511C77.7226 48.8256 77.9137 49.2957 78.1917 49.8876H75.829C75.7942 49.2957 75.7074 48.8256 75.5684 48.4252L75.2557 47.4329H71.3814L71.0687 48.4252C70.9297 48.8256 70.8255 49.2957 70.8081 49.8876H68.4975C68.7755 49.2957 68.9666 48.8431 69.1577 48.2511ZM74.7345 45.866L73.3099 41.4266L71.8853 45.866H74.7345Z" fill="#fff"></path><path d="M79.6337 48.4252V41.1132C79.6337 40.7128 79.5294 40.2428 79.3904 39.6508H81.8922L86.0791 46.928V41.0958C86.0791 40.6954 85.9749 40.2253 85.8359 39.6334H88.077C87.938 40.2079 87.8338 40.678 87.8338 41.0958V48.1467C87.8338 48.6863 87.8338 49.0868 87.8685 49.8702H85.6969L81.3884 42.3667V48.4252C81.3884 48.8256 81.4926 49.2957 81.6316 49.8876H79.3904C79.5294 49.3131 79.6337 48.843 79.6337 48.4252Z" fill="#fff"></path><path d="M95.2348 48.373L92.3856 44.5777V48.4426C92.3856 48.843 92.4898 49.3131 92.6288 49.905H90.2834C90.4224 49.3305 90.5267 48.8604 90.5267 48.4426V41.1306C90.5267 40.7302 90.4224 40.2602 90.2834 39.6682H92.6288C92.4898 40.2428 92.3856 40.7128 92.3856 41.1306V44.3862L95.1305 41.2003C95.6344 40.6084 95.8081 40.3124 96.2077 39.6682H98.5531C97.9624 40.3124 97.7018 40.6258 97.2674 41.148L94.5051 44.4036L97.528 48.4426C97.9276 48.9823 98.2056 49.3131 98.7442 49.8876H96.2946C95.895 49.2609 95.7039 48.9823 95.2348 48.373Z" fill="#fff"></path><path d="M99.9255 48.4252V41.1132C99.9255 40.7128 99.8213 40.2428 99.6823 39.6508H102.028C101.889 40.2254 101.784 40.6954 101.784 41.1132V48.4252C101.784 48.8256 101.889 49.2957 102.028 49.8876H99.6823C99.8387 49.3131 99.9255 48.8431 99.9255 48.4252Z" fill="#fff"></path><path d="M104.46 48.4252V41.1132C104.46 40.7128 104.356 40.2428 104.217 39.6508H106.718L110.905 46.928V41.0958C110.905 40.6954 110.801 40.2253 110.662 39.6334H112.903C112.764 40.2079 112.66 40.678 112.66 41.0958V48.1467C112.66 48.6863 112.66 49.0868 112.695 49.8702H110.541L106.232 42.3667V48.4252C106.232 48.8256 106.336 49.2957 106.475 49.8876H104.234C104.356 49.3131 104.46 48.843 104.46 48.4252Z" fill="#fff"></path><path d="M114.606 44.8563C114.606 41.8618 116.743 39.529 120.165 39.529C121.416 39.529 122.493 39.8597 123.31 40.295V42.2971C122.094 41.4788 121.121 41.1829 120.13 41.1829C117.837 41.1829 116.517 42.6627 116.517 44.7866C116.517 46.8932 117.768 48.3556 119.87 48.3556C121.329 48.3556 122.424 47.6592 122.597 45.9356H121.26C120.391 45.9356 119.922 45.9356 119.331 45.9705L119.87 44.3688H124.422V44.9085C124.422 49.2783 121.572 50.0269 119.783 50.0269C116.638 50.0095 114.606 47.7811 114.606 44.8563Z" fill="#fff"></path><path d="M128.539 44.8563C128.539 41.8618 130.676 39.529 134.099 39.529C135.349 39.529 136.427 39.8597 137.243 40.295V42.2971C136.027 41.4788 135.054 41.1829 134.064 41.1829C131.771 41.1829 130.45 42.6627 130.45 44.7866C130.45 46.8932 131.701 48.3556 133.803 48.3556C135.263 48.3556 136.357 47.6592 136.531 45.9356H135.193C134.324 45.9356 133.873 45.9356 133.265 45.9705L133.803 44.3688H138.355V44.9085C138.355 49.2783 135.506 50.0269 133.716 50.0269C130.572 50.0095 128.539 47.7811 128.539 44.8563Z" fill="#fff"></path><path d="M140.353 48.4252V41.1132C140.353 40.7128 140.249 40.2428 140.11 39.6508H143.966C146.225 39.6508 147.389 40.8521 147.389 42.6105C147.389 44.0903 146.59 45.1348 145.009 45.4482L147.267 48.4426C147.667 48.9823 147.962 49.3131 148.518 49.8876H146.069C145.686 49.2609 145.461 48.9823 145.009 48.373L142.959 45.5701H142.212V48.4426C142.212 48.8431 142.316 49.3131 142.455 49.905H140.11C140.266 49.3131 140.353 48.8431 140.353 48.4252ZM143.984 44.038C144.991 44.038 145.513 43.5332 145.513 42.6801C145.513 41.827 144.991 41.3222 143.984 41.3222H142.229V44.038H143.984Z" fill="#fff"></path><path d="M148.866 44.7692C148.866 41.8444 151.003 39.529 154.078 39.529C157.153 39.529 159.29 41.8444 159.29 44.7692C159.29 47.694 157.153 50.0095 154.078 50.0095C151.003 50.0095 148.866 47.694 148.866 44.7692ZM157.396 44.7692C157.396 42.6627 156.145 41.2003 154.078 41.2003C152.01 41.2003 150.759 42.6627 150.759 44.7692C150.759 46.8758 152.01 48.3382 154.078 48.3382C156.145 48.3382 157.396 46.8758 157.396 44.7692Z" fill="#fff"></path><path d="M161.166 46.3361V41.1132C161.166 40.7128 161.062 40.2428 160.923 39.6508H163.268C163.129 40.2254 163.025 40.6954 163.025 41.1132V46.1446C163.025 47.6592 163.859 48.3208 165.214 48.3208C166.569 48.3208 167.403 47.6592 167.403 46.1446V41.1132C167.403 40.7128 167.299 40.2428 167.16 39.6508H169.47C169.331 40.2254 169.227 40.6954 169.227 41.1132V46.3361C169.227 48.7908 167.663 50.0269 165.179 50.0269C162.729 50.0095 161.166 48.7908 161.166 46.3361Z" fill="#fff"></path><path d="M171.746 48.4252V41.1132C171.746 40.7128 171.642 40.2428 171.503 39.6508H175.36C177.618 39.6508 178.782 40.8521 178.782 42.7497C178.782 44.6474 177.618 45.8486 175.36 45.8486H173.605V48.4252C173.605 48.8256 173.709 49.2957 173.848 49.8876H171.503C171.642 49.3131 171.746 48.8431 171.746 48.4252ZM175.377 44.2295C176.385 44.2295 176.906 43.7247 176.906 42.7846C176.906 41.8444 176.385 41.3396 175.377 41.3396H173.622V44.2295H175.377Z" fill="#fff"></path></g></svg></span>
+    </div>
+  </div>
+</header>
+
+
+<section class="stats" style="padding:0">
+  <div class="wrap">
+    <div class="grid">
+      <div class="stat"><div class="v">23,816</div><div class="l">Books</div></div>
+      <div class="stat"><div class="v">3,286</div><div class="l">On-demand video courses</div></div>
+      <div class="stat"><div class="v">2,364</div><div class="l">Live instructor-led events</div></div>
+      <div class="stat"><div class="v">1,486</div><div class="l">Hands-on labs</div></div>
+    </div>
+  </div>
+</section>
+
+
+<nav class="tabs" role="tablist">
+  <div class="wrap tabs-inner">
+    <button class="tab-btn active" data-tab="tab-summary">Summary</button>
+    <button class="tab-btn" data-tab="tab-engineering">Engineering</button>
+    <button class="tab-btn" data-tab="tab-data">Data</button>
+    <button class="tab-btn" data-tab="tab-ai">AI &amp; ML</button>
+    <button class="tab-btn" data-tab="tab-academies">Academies</button>
+    <button class="tab-btn" data-tab="tab-modalities">Modalities</button>
+  </div>
+</nav>
+
+<main>
+  <div class="wrap">
+    
+<section class="tab-panel active" id="tab-summary">
+  <div class="panel-head">
+    <span class="kicker">Summary</span>
+    <h2>Catalogue volume by domain.</h2>
+    <p class="lede-muted">A snapshot of the O’Reilly learning platform across Engineering, Data, and AI. Books, on-demand video, live instructor-led events, hands-on labs, certification preparation, and structured enterprise pathways.</p>
+  </div>
+  
+    
+    <div class="table-wrap">
+      <table id="tbl-summary" class="data-table">
+        <thead><tr><th class="sortable"><span>Domain</span><span class="sort-icon"></span></th><th class="num sortable" data-tooltip="Full-text technical and business books from O’Reilly and over 200 partner publishers, including early-release titles."><span>Books</span><span class="sort-icon"></span></th><th class="num sortable" data-tooltip="Pre-recorded video courses with structured curricula, taught by industry practitioners and authors."><span>On-demand video courses</span><span class="sort-icon"></span></th><th class="num sortable" data-tooltip="Interactive instructor-led sessions, including live courses, expert-led conversations, Katas challenges, and Superstream events."><span>Live events</span><span class="sort-icon"></span></th><th class="num sortable" data-tooltip="Browser-based, sandboxed environments for practising real-world skills (cloud platforms, languages, tools) without local setup."><span>Hands-on labs</span><span class="sort-icon"></span></th><th class="num sortable" data-tooltip="Timed, scored practice exams aligned to industry certifications (AWS, Azure, GCP, CISSP, PMP, and others)."><span>Certification practice tests</span><span class="sort-icon"></span></th><th class="num sortable" data-tooltip="Structured study guides aligned to specific certification exam requirements."><span>Certification guides</span><span class="sort-icon"></span></th><th class="num sortable" data-tooltip="Curated learning sequences combining books, videos, and labs, assembled by O’Reilly experts on a focused skill or technology area."><span>Expert playlists</span><span class="sort-icon"></span></th><th class="num sortable" data-tooltip="Audio editions of selected technical and business titles."><span>Audiobooks</span><span class="sort-icon"></span></th><th class="num sortable" data-tooltip="Skill-based assessments that produce a verifiable, shareable digital credential on completion."><span>Skill plans</span><span class="sort-icon"></span></th><th class="num sortable" data-tooltip="Enterprise-grade structured programs with learning paths designed for organization-wide rollout."><span>Academies</span><span class="sort-icon"></span></th></tr></thead>
+        <tbody><tr><td class="row-label">Engineering</td><td data-sort="14038" class="num">14,038</td><td data-sort="2241" class="num">2,241</td><td data-sort="1500" class="num">1,500</td><td data-sort="1154" class="num">1,154</td><td data-sort="117" class="num">117</td><td data-sort="71" class="num">71</td><td data-sort="241" class="num">241</td><td data-sort="454" class="num">454</td><td data-sort="7" class="num">7</td><td data-sort="-1" class="num"><span class='dash'>—</span></td></tr><tr><td class="row-label">Data</td><td data-sort="7100" class="num">7,100</td><td data-sort="569" class="num">569</td><td data-sort="383" class="num">383</td><td data-sort="229" class="num">229</td><td data-sort="1" class="num">1</td><td data-sort="1" class="num">1</td><td data-sort="59" class="num">59</td><td data-sort="151" class="num">151</td><td data-sort="1" class="num">1</td><td data-sort="1" class="num">1</td></tr><tr><td class="row-label">AI / ML</td><td data-sort="2678" class="num">2,678</td><td data-sort="476" class="num">476</td><td data-sort="481" class="num">481</td><td data-sort="103" class="num">103</td><td data-sort="2" class="num">2</td><td data-sort="1" class="num">1</td><td data-sort="93" class="num">93</td><td data-sort="285" class="num">285</td><td data-sort="1" class="num">1</td><td data-sort="1" class="num">1</td></tr></tbody>
+        <tfoot><tr class="total-row"><td class="row-label">Total</td><td data-sort="23816" class="num">23,816</td><td data-sort="3286" class="num">3,286</td><td data-sort="2364" class="num">2,364</td><td data-sort="1486" class="num">1,486</td><td data-sort="120" class="num">120</td><td data-sort="73" class="num">73</td><td data-sort="393" class="num">393</td><td data-sort="890" class="num">890</td><td data-sort="9" class="num">9</td><td data-sort="2" class="num">2</td></tr></tfoot>
+      </table>
+    </div>
+    
+</section>
+
+    
+<section class="tab-panel" id="tab-engineering">
+  <div class="panel-head">
+    <span class="kicker">Engineering</span>
+    <h2>Five skill areas, deep coverage.</h2>
+    <p class="lede-muted">Cloud computing, programming languages, software architecture, IT operations, and security.</p>
+  </div>
+  
+    <div class="table-hint-row"><span class="table-hint">Click any column header to sort.</span></div>
+    <div class="table-wrap">
+      <table id="tbl-eng" class="data-table">
+        <thead><tr><th class="sortable"><span>Subject</span><span class="sort-icon"></span></th><th class="num sortable" data-tooltip="Full-text technical and business books from O’Reilly and over 200 partner publishers, including early-release titles."><span>Books</span><span class="sort-icon"></span></th><th class="num sortable" data-tooltip="Pre-recorded video courses with structured curricula, taught by industry practitioners and authors."><span>On-demand video courses</span><span class="sort-icon"></span></th><th class="num sortable" data-tooltip="Interactive instructor-led sessions, including live courses, expert-led conversations, Katas challenges, and Superstream events."><span>Live events</span><span class="sort-icon"></span></th><th class="num sortable" data-tooltip="Browser-based, sandboxed environments for practising real-world skills (cloud platforms, languages, tools) without local setup."><span>Hands-on labs</span><span class="sort-icon"></span></th><th class="num sortable" data-tooltip="Timed, scored practice exams aligned to industry certifications (AWS, Azure, GCP, CISSP, PMP, and others)."><span>Certification practice tests</span><span class="sort-icon"></span></th><th class="num sortable" data-tooltip="Structured study guides aligned to specific certification exam requirements."><span>Certification guides</span><span class="sort-icon"></span></th><th class="num sortable" data-tooltip="Curated learning sequences combining books, videos, and labs, assembled by O’Reilly experts on a focused skill or technology area."><span>Expert playlists</span><span class="sort-icon"></span></th><th class="num sortable" data-tooltip="Audio editions of selected technical and business titles."><span>Audiobooks</span><span class="sort-icon"></span></th><th class="num sortable" data-tooltip="Skill-based assessments that produce a verifiable, shareable digital credential on completion."><span>Skill plans</span><span class="sort-icon"></span></th></tr></thead>
+        <tbody><tr><td class="row-label">Cloud Computing</td><td data-sort="1247" class="num">1,247</td><td data-sort="277" class="num">277</td><td data-sort="266" class="num">266</td><td data-sort="319" class="num">319</td><td data-sort="28" class="num">28</td><td data-sort="17" class="num">17</td><td data-sort="32" class="num">32</td><td data-sort="45" class="num">45</td><td data-sort="1" class="num">1</td></tr><tr><td class="row-label">Programming Languages</td><td data-sort="5011" class="num">5,011</td><td data-sort="759" class="num">759</td><td data-sort="326" class="num">326</td><td data-sort="183" class="num">183</td><td data-sort="4" class="num">4</td><td data-sort="4" class="num">4</td><td data-sort="49" class="num">49</td><td data-sort="99" class="num">99</td><td data-sort="2" class="num">2</td></tr><tr><td class="row-label">Software Architecture</td><td data-sort="917" class="num">917</td><td data-sort="95" class="num">95</td><td data-sort="130" class="num">130</td><td data-sort="1" class="num">1</td><td data-sort="-1" class="num"><span class='dash'>—</span></td><td data-sort="-1" class="num"><span class='dash'>—</span></td><td data-sort="46" class="num">46</td><td data-sort="56" class="num">56</td><td data-sort="1" class="num">1</td></tr><tr><td class="row-label">IT Operations</td><td data-sort="4385" class="num">4,385</td><td data-sort="762" class="num">762</td><td data-sort="595" class="num">595</td><td data-sort="629" class="num">629</td><td data-sort="67" class="num">67</td><td data-sort="40" class="num">40</td><td data-sort="78" class="num">78</td><td data-sort="124" class="num">124</td><td data-sort="2" class="num">2</td></tr><tr><td class="row-label">Security</td><td data-sort="2478" class="num">2,478</td><td data-sort="348" class="num">348</td><td data-sort="183" class="num">183</td><td data-sort="22" class="num">22</td><td data-sort="18" class="num">18</td><td data-sort="10" class="num">10</td><td data-sort="36" class="num">36</td><td data-sort="130" class="num">130</td><td data-sort="1" class="num">1</td></tr></tbody>
+        <tfoot><tr class="total-row"><td class="row-label">Total</td><td data-sort="14038" class="num">14,038</td><td data-sort="2241" class="num">2,241</td><td data-sort="1500" class="num">1,500</td><td data-sort="1154" class="num">1,154</td><td data-sort="117" class="num">117</td><td data-sort="71" class="num">71</td><td data-sort="241" class="num">241</td><td data-sort="454" class="num">454</td><td data-sort="7" class="num">7</td></tr></tfoot>
+      </table>
+    </div>
+    
+</section>
+
+    
+<section class="tab-panel" id="tab-data">
+  <div class="panel-head">
+    <span class="kicker">Data</span>
+    <h2>Two skill areas, sixteen subtopics.</h2>
+    <p class="lede-muted">Coverage is organised into Data Engineering and Data Science.</p>
+  </div>
+  
+    <div class="table-controls">
+      <button class="bulk-toggle" data-table="tbl-data">Collapse all subtopics</button>
+      <span class="table-hint">Use the <code>−</code> / <code>+</code> button next to a parent subject to expand or collapse its subtopics.</span>
+    </div>
+    <div class="table-wrap">
+      <table id="tbl-data" class="data-table expandable">
+        <thead><tr><th></th><th class="sortable"><span>Subject / subtopic</span><span class="sort-icon"></span></th><th class="num sortable" data-tooltip="Full-text technical and business books from O’Reilly and over 200 partner publishers, including early-release titles."><span>Books</span><span class="sort-icon"></span></th><th class="num sortable" data-tooltip="Pre-recorded video courses with structured curricula, taught by industry practitioners and authors."><span>On-demand video courses</span><span class="sort-icon"></span></th><th class="num sortable" data-tooltip="Interactive instructor-led sessions, including live courses, expert-led conversations, Katas challenges, and Superstream events."><span>Live events</span><span class="sort-icon"></span></th><th class="num sortable" data-tooltip="Browser-based, sandboxed environments for practising real-world skills (cloud platforms, languages, tools) without local setup."><span>Hands-on labs</span><span class="sort-icon"></span></th><th class="num sortable" data-tooltip="Curated learning sequences combining books, videos, and labs, assembled by O’Reilly experts on a focused skill or technology area."><span>Expert playlists</span><span class="sort-icon"></span></th><th class="num sortable" data-tooltip="Audio editions of selected technical and business titles."><span>Audiobooks</span><span class="sort-icon"></span></th><th class="num sortable" data-tooltip="Skill-based assessments that produce a verifiable, shareable digital credential on completion."><span>Skill plans</span><span class="sort-icon"></span></th><th class="num sortable" data-tooltip="Enterprise-grade structured programs with learning paths designed for organization-wide rollout."><span>Academies</span><span class="sort-icon"></span></th></tr></thead>
+        <tbody><tr class="parent-row"><td class="toggle-cell"><button class="toggle-btn" data-target="tbl-data-g0" aria-expanded="true">−</button></td><td class="row-label parent-label">Data Engineering</td><td data-sort="4291" class="num">4,291</td><td data-sort="325" class="num">325</td><td data-sort="178" class="num">178</td><td data-sort="160" class="num">160</td><td data-sort="32" class="num">32</td><td data-sort="71" class="num">71</td><td data-sort="-1" class="num"><span class='dash'>—</span></td><td data-sort="-1" class="num"><span class='dash'>—</span></td></tr><tr class="child-row" data-group="tbl-data-g0"><td></td><td class="row-label child-label">Data Warehouse</td><td data-sort="57" class="num">57</td><td data-sort="2" class="num">2</td><td data-sort="2" class="num">2</td><td data-sort="-1" class="num"><span class='dash'>—</span></td><td data-sort="-1" class="num"><span class='dash'>—</span></td><td data-sort="-1" class="num"><span class='dash'>—</span></td><td data-sort="-1" class="num"><span class='dash'>—</span></td><td data-sort="-1" class="num"><span class='dash'>—</span></td></tr><tr class="child-row" data-group="tbl-data-g0"><td></td><td class="row-label child-label">SQL</td><td data-sort="365" class="num">365</td><td data-sort="42" class="num">42</td><td data-sort="22" class="num">22</td><td data-sort="48" class="num">48</td><td data-sort="4" class="num">4</td><td data-sort="4" class="num">4</td><td data-sort="-1" class="num"><span class='dash'>—</span></td><td data-sort="-1" class="num"><span class='dash'>—</span></td></tr><tr class="child-row" data-group="tbl-data-g0"><td></td><td class="row-label child-label">Apache Spark</td><td data-sort="137" class="num">137</td><td data-sort="31" class="num">31</td><td data-sort="20" class="num">20</td><td data-sort="1" class="num">1</td><td data-sort="1" class="num">1</td><td data-sort="1" class="num">1</td><td data-sort="-1" class="num"><span class='dash'>—</span></td><td data-sort="-1" class="num"><span class='dash'>—</span></td></tr><tr class="child-row" data-group="tbl-data-g0"><td></td><td class="row-label child-label">MS SQL Server</td><td data-sort="201" class="num">201</td><td data-sort="43" class="num">43</td><td data-sort="-1" class="num"><span class='dash'>—</span></td><td data-sort="-1" class="num"><span class='dash'>—</span></td><td data-sort="-1" class="num"><span class='dash'>—</span></td><td data-sort="1" class="num">1</td><td data-sort="-1" class="num"><span class='dash'>—</span></td><td data-sort="-1" class="num"><span class='dash'>—</span></td></tr><tr class="child-row" data-group="tbl-data-g0"><td></td><td class="row-label child-label">MySQL</td><td data-sort="169" class="num">169</td><td data-sort="12" class="num">12</td><td data-sort="3" class="num">3</td><td data-sort="1" class="num">1</td><td data-sort="1" class="num">1</td><td data-sort="-1" class="num"><span class='dash'>—</span></td><td data-sort="-1" class="num"><span class='dash'>—</span></td><td data-sort="-1" class="num"><span class='dash'>—</span></td></tr><tr class="child-row" data-group="tbl-data-g0"><td></td><td class="row-label child-label">Kafka</td><td data-sort="51" class="num">51</td><td data-sort="25" class="num">25</td><td data-sort="8" class="num">8</td><td data-sort="9" class="num">9</td><td data-sort="1" class="num">1</td><td data-sort="4" class="num">4</td><td data-sort="-1" class="num"><span class='dash'>—</span></td><td data-sort="-1" class="num"><span class='dash'>—</span></td></tr><tr class="child-row" data-group="tbl-data-g0"><td></td><td class="row-label child-label">Streaming & Messaging</td><td data-sort="163" class="num">163</td><td data-sort="29" class="num">29</td><td data-sort="16" class="num">16</td><td data-sort="16" class="num">16</td><td data-sort="3" class="num">3</td><td data-sort="6" class="num">6</td><td data-sort="-1" class="num"><span class='dash'>—</span></td><td data-sort="-1" class="num"><span class='dash'>—</span></td></tr><tr class="child-row" data-group="tbl-data-g0"><td></td><td class="row-label child-label">Relational Databases</td><td data-sort="655" class="num">655</td><td data-sort="75" class="num">75</td><td data-sort="17" class="num">17</td><td data-sort="19" class="num">19</td><td data-sort="1" class="num">1</td><td data-sort="4" class="num">4</td><td data-sort="-1" class="num"><span class='dash'>—</span></td><td data-sort="-1" class="num"><span class='dash'>—</span></td></tr><tr class="child-row" data-group="tbl-data-g0"><td></td><td class="row-label child-label">NoSQL Databases</td><td data-sort="152" class="num">152</td><td data-sort="24" class="num">24</td><td data-sort="15" class="num">15</td><td data-sort="51" class="num">51</td><td data-sort="3" class="num">3</td><td data-sort="1" class="num">1</td><td data-sort="-1" class="num"><span class='dash'>—</span></td><td data-sort="-1" class="num"><span class='dash'>—</span></td></tr><tr class="parent-row"><td class="toggle-cell"><button class="toggle-btn" data-target="tbl-data-g1" aria-expanded="true">−</button></td><td class="row-label parent-label">Data Science</td><td data-sort="2809" class="num">2,809</td><td data-sort="244" class="num">244</td><td data-sort="205" class="num">205</td><td data-sort="69" class="num">69</td><td data-sort="27" class="num">27</td><td data-sort="80" class="num">80</td><td data-sort="1" class="num">1</td><td data-sort="1" class="num">1</td></tr><tr class="child-row" data-group="tbl-data-g1"><td></td><td class="row-label child-label">Pandas</td><td data-sort="38" class="num">38</td><td data-sort="16" class="num">16</td><td data-sort="13" class="num">13</td><td data-sort="6" class="num">6</td><td data-sort="1" class="num">1</td><td data-sort="5" class="num">5</td><td data-sort="-1" class="num"><span class='dash'>—</span></td><td data-sort="-1" class="num"><span class='dash'>—</span></td></tr><tr class="child-row" data-group="tbl-data-g1"><td></td><td class="row-label child-label">R</td><td data-sort="211" class="num">211</td><td data-sort="21" class="num">21</td><td data-sort="9" class="num">9</td><td data-sort="4" class="num">4</td><td data-sort="3" class="num">3</td><td data-sort="3" class="num">3</td><td data-sort="-1" class="num"><span class='dash'>—</span></td><td data-sort="-1" class="num"><span class='dash'>—</span></td></tr><tr class="child-row" data-group="tbl-data-g1"><td></td><td class="row-label child-label">D3</td><td data-sort="31" class="num">31</td><td data-sort="7" class="num">7</td><td data-sort="1" class="num">1</td><td data-sort="-1" class="num"><span class='dash'>—</span></td><td data-sort="-1" class="num"><span class='dash'>—</span></td><td data-sort="1" class="num">1</td><td data-sort="-1" class="num"><span class='dash'>—</span></td><td data-sort="-1" class="num"><span class='dash'>—</span></td></tr><tr class="child-row" data-group="tbl-data-g1"><td></td><td class="row-label child-label">Power BI</td><td data-sort="121" class="num">121</td><td data-sort="27" class="num">27</td><td data-sort="23" class="num">23</td><td data-sort="-1" class="num"><span class='dash'>—</span></td><td data-sort="2" class="num">2</td><td data-sort="2" class="num">2</td><td data-sort="1" class="num">1</td><td data-sort="-1" class="num"><span class='dash'>—</span></td></tr><tr class="child-row" data-group="tbl-data-g1"><td></td><td class="row-label child-label">Tableau</td><td data-sort="88" class="num">88</td><td data-sort="21" class="num">21</td><td data-sort="9" class="num">9</td><td data-sort="-1" class="num"><span class='dash'>—</span></td><td data-sort="2" class="num">2</td><td data-sort="2" class="num">2</td><td data-sort="-1" class="num"><span class='dash'>—</span></td><td data-sort="-1" class="num"><span class='dash'>—</span></td></tr><tr class="child-row" data-group="tbl-data-g1"><td></td><td class="row-label child-label">Statistics</td><td data-sort="577" class="num">577</td><td data-sort="18" class="num">18</td><td data-sort="37" class="num">37</td><td data-sort="28" class="num">28</td><td data-sort="-1" class="num"><span class='dash'>—</span></td><td data-sort="8" class="num">8</td><td data-sort="-1" class="num"><span class='dash'>—</span></td><td data-sort="-1" class="num"><span class='dash'>—</span></td></tr><tr class="child-row" data-group="tbl-data-g1"><td></td><td class="row-label child-label">Data Visualisation</td><td data-sort="301" class="num">301</td><td data-sort="60" class="num">60</td><td data-sort="31" class="num">31</td><td data-sort="13" class="num">13</td><td data-sort="2" class="num">2</td><td data-sort="9" class="num">9</td><td data-sort="-1" class="num"><span class='dash'>—</span></td><td data-sort="-1" class="num"><span class='dash'>—</span></td></tr></tbody>
+        <tfoot><tr class="total-row"><td></td><td class="row-label">Total</td><td data-sort="7100" class="num">7,100</td><td data-sort="569" class="num">569</td><td data-sort="383" class="num">383</td><td data-sort="229" class="num">229</td><td data-sort="59" class="num">59</td><td data-sort="151" class="num">151</td><td data-sort="1" class="num">1</td><td data-sort="1" class="num">1</td></tr></tfoot>
+      </table>
+    </div>
+    
+</section>
+
+    
+<section class="tab-panel" id="tab-ai">
+  <div class="panel-head">
+    <span class="kicker">AI &amp; ML</span>
+    <h2>Generative AI through to MLOps.</h2>
+    <p class="lede-muted">Coverage spans Generative AI, Machine Learning, broader AI, Deep Learning, Natural Language Processing, and MLOps. The subject area also includes the AI Academy as a structured enterprise learning pathway.</p>
+  </div>
+  
+    <div class="table-controls">
+      <button class="bulk-toggle" data-table="tbl-ai">Collapse all subtopics</button>
+      
+    </div>
+    <div class="table-wrap">
+      <table id="tbl-ai" class="data-table expandable">
+        <thead><tr><th></th><th class="sortable"><span>Subject / subtopic</span><span class="sort-icon"></span></th><th class="num sortable" data-tooltip="Full-text technical and business books from O’Reilly and over 200 partner publishers, including early-release titles."><span>Books</span><span class="sort-icon"></span></th><th class="num sortable" data-tooltip="Pre-recorded video courses with structured curricula, taught by industry practitioners and authors."><span>On-demand video courses</span><span class="sort-icon"></span></th><th class="num sortable" data-tooltip="Interactive instructor-led sessions, including live courses, expert-led conversations, Katas challenges, and Superstream events."><span>Live events</span><span class="sort-icon"></span></th><th class="num sortable" data-tooltip="Browser-based, sandboxed environments for practising real-world skills (cloud platforms, languages, tools) without local setup."><span>Hands-on labs</span><span class="sort-icon"></span></th><th class="num sortable" data-tooltip="Curated learning sequences combining books, videos, and labs, assembled by O’Reilly experts on a focused skill or technology area."><span>Expert playlists</span><span class="sort-icon"></span></th><th class="num sortable" data-tooltip="Audio editions of selected technical and business titles."><span>Audiobooks</span><span class="sort-icon"></span></th><th class="num sortable" data-tooltip="Skill-based assessments that produce a verifiable, shareable digital credential on completion."><span>Skill plans</span><span class="sort-icon"></span></th><th class="num sortable" data-tooltip="Enterprise-grade structured programs with learning paths designed for organization-wide rollout."><span>Academies</span><span class="sort-icon"></span></th></tr></thead>
+        <tbody><tr class="parent-row"><td class="toggle-cell"><button class="toggle-btn" data-target="tbl-ai-g0" aria-expanded="true">−</button></td><td class="row-label parent-label">AI / ML (overall)</td><td data-sort="2678" class="num">2,678</td><td data-sort="476" class="num">476</td><td data-sort="481" class="num">481</td><td data-sort="103" class="num">103</td><td data-sort="93" class="num">93</td><td data-sort="285" class="num">285</td><td data-sort="1" class="num">1</td><td data-sort="1" class="num">1</td></tr><tr class="child-row" data-group="tbl-ai-g0"><td></td><td class="row-label child-label">Generative AI</td><td data-sort="365" class="num">365</td><td data-sort="132" class="num">132</td><td data-sort="133" class="num">133</td><td data-sort="5" class="num">5</td><td data-sort="24" class="num">24</td><td data-sort="71" class="num">71</td><td data-sort="1" class="num">1</td><td data-sort="-1" class="num"><span class='dash'>—</span></td></tr><tr class="child-row" data-group="tbl-ai-g0"><td></td><td class="row-label child-label">Machine Learning</td><td data-sort="1378" class="num">1,378</td><td data-sort="249" class="num">249</td><td data-sort="222" class="num">222</td><td data-sort="95" class="num">95</td><td data-sort="23" class="num">23</td><td data-sort="75" class="num">75</td><td data-sort="-1" class="num"><span class='dash'>—</span></td><td data-sort="-1" class="num"><span class='dash'>—</span></td></tr><tr class="child-row" data-group="tbl-ai-g0"><td></td><td class="row-label child-label">AI</td><td data-sort="1285" class="num">1,285</td><td data-sort="228" class="num">228</td><td data-sort="256" class="num">256</td><td data-sort="5" class="num">5</td><td data-sort="68" class="num">68</td><td data-sort="210" class="num">210</td><td data-sort="1" class="num">1</td><td data-sort="-1" class="num"><span class='dash'>—</span></td></tr><tr class="child-row" data-group="tbl-ai-g0"><td></td><td class="row-label child-label">Deep Learning</td><td data-sort="380" class="num">380</td><td data-sort="62" class="num">62</td><td data-sort="53" class="num">53</td><td data-sort="27" class="num">27</td><td data-sort="4" class="num">4</td><td data-sort="24" class="num">24</td><td data-sort="-1" class="num"><span class='dash'>—</span></td><td data-sort="-1" class="num"><span class='dash'>—</span></td></tr><tr class="child-row" data-group="tbl-ai-g0"><td></td><td class="row-label child-label">NLP</td><td data-sort="215" class="num">215</td><td data-sort="59" class="num">59</td><td data-sort="28" class="num">28</td><td data-sort="25" class="num">25</td><td data-sort="3" class="num">3</td><td data-sort="15" class="num">15</td><td data-sort="-1" class="num"><span class='dash'>—</span></td><td data-sort="-1" class="num"><span class='dash'>—</span></td></tr><tr class="child-row" data-group="tbl-ai-g0"><td></td><td class="row-label child-label">MLOps</td><td data-sort="50" class="num">50</td><td data-sort="11" class="num">11</td><td data-sort="10" class="num">10</td><td data-sort="1" class="num">1</td><td data-sort="-1" class="num"><span class='dash'>—</span></td><td data-sort="1" class="num">1</td><td data-sort="-1" class="num"><span class='dash'>—</span></td><td data-sort="-1" class="num"><span class='dash'>—</span></td></tr></tbody>
+        <tfoot><tr class="total-row"><td></td><td class="row-label">Total</td><td data-sort="2678" class="num">2,678</td><td data-sort="476" class="num">476</td><td data-sort="481" class="num">481</td><td data-sort="103" class="num">103</td><td data-sort="93" class="num">93</td><td data-sort="285" class="num">285</td><td data-sort="1" class="num">1</td><td data-sort="1" class="num">1</td></tr></tfoot>
+      </table>
+    </div>
+    
+</section>
+
+    
+<section class="tab-panel" id="tab-academies">
+  <div class="panel-head">
+    <span class="kicker">Academies</span>
+    <h2>Structured pathways for organisation-wide rollout.</h2>
+    <p class="lede-muted">Beyond the headline catalogue volume, two Academies bundle curated content from across the platform into sequenced learning paths suitable for non-specialist audiences.</p>
+  </div>
+
+  <div class="academy-grid">
+    <div class="academy-card">
+      <div class="row">
+        <span class="logo-chip"><span class="swatch" style="background:#7ee0bf"></span> AI Academy</span>
+        <div class="industry">Eight learning paths</div>
+      </div>
+      <p>Designed to take learners from novice through to incorporating AI into everyday tasks. The objective is to build foundational AI skills that boost enterprise-wide productivity, empowering roles in business analysis, marketing, sales, product management, HR, and leadership to work more efficiently.</p>
+      <ul><li>GenAI Essentials for Everyone</li><li>GenAI for Leaders</li><li>GenAI for Project Management</li><li>GenAI for Executives</li><li>GenAI for Marketing</li><li>GenAI for HR</li><li>GenAI for Business Analysis</li><li>GenAI for Product Management</li></ul>
+    </div>
+    <div class="academy-card">
+      <div class="row">
+        <span class="logo-chip"><span class="swatch" style="background:#2563ea"></span> Data Literacy Academy</span>
+        <div class="industry">Five learning paths</div>
+      </div>
+      <p>Recently released on the platform. Designed to build foundational data literacy with structured learning paths – building the skills to confidently source, manage, engage with, and communicate data to make informed decisions across the business.</p>
+      <ul><li>Data Essentials for Everyone</li><li>Data-Informed Decision Making</li><li>Data Workflows with Everyday Tools</li><li>Data Storytelling and Communication</li><li>Data Logic for Business Systems</li></ul>
+    </div>
+  </div>
+</section>
+
+    
+<section class="tab-panel" id="tab-modalities">
+  <div class="panel-head">
+    <span class="kicker">Modalities</span>
+    <h2>Plain-language definitions.</h2>
+    <p class="lede-muted">A glossary of every content modality referenced in this response.</p>
+  </div>
+  <div class="table-wrap">
+    <table class="data-table modality-table">
+      <thead><tr><th>Modality</th><th>Definition</th></tr></thead>
+      <tbody><tr><td class="row-label">Books</td><td class="def-cell">Full-text technical and business books from O’Reilly and over 200 partner publishers, including early-release titles.</td></tr><tr><td class="row-label">On-demand video courses</td><td class="def-cell">Pre-recorded video courses with structured curricula, taught by industry practitioners and authors.</td></tr><tr><td class="row-label">Live events</td><td class="def-cell">Interactive instructor-led sessions, including live courses, expert-led conversations, Katas challenges, and Superstream events.</td></tr><tr><td class="row-label">Hands-on labs</td><td class="def-cell">Browser-based, sandboxed environments for practising real-world skills (cloud platforms, languages, tools) without local setup.</td></tr><tr><td class="row-label">Certification practice tests</td><td class="def-cell">Timed, scored practice exams aligned to industry certifications (AWS, Azure, GCP, CISSP, PMP, and others).</td></tr><tr><td class="row-label">Certification guides</td><td class="def-cell">Structured study guides aligned to specific certification exam requirements.</td></tr><tr><td class="row-label">Expert playlists</td><td class="def-cell">Curated learning sequences combining books, videos, and labs, assembled by O’Reilly experts on a focused skill or technology area.</td></tr><tr><td class="row-label">Audiobooks</td><td class="def-cell">Audio editions of selected technical and business titles.</td></tr><tr><td class="row-label">Skill plans</td><td class="def-cell">Skill-based assessments that produce a verifiable, shareable digital credential on completion.</td></tr><tr><td class="row-label">Academies</td><td class="def-cell">Enterprise-grade structured programs with learning paths designed for organization-wide rollout.</td></tr></tbody>
+    </table>
+  </div>
+</section>
+
+  </div>
+</main>
+
+<script>
+(function() {
+  // Tab switching
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const panels = document.querySelectorAll('.tab-panel');
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.dataset.tab;
+      tabBtns.forEach(b => b.classList.toggle('active', b === btn));
+      panels.forEach(p => p.classList.toggle('active', p.id === target));
+      // Scroll the panel into view below the sticky tabs
+      const tabsHeight = document.querySelector('nav.tabs').getBoundingClientRect().height;
+      const headerHeight = document.querySelector('header.top').getBoundingClientRect().height;
+      const panel = document.getElementById(target);
+      const top = panel.getBoundingClientRect().top + window.scrollY - tabsHeight - headerHeight - 12;
+      window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+    });
+  });
+
+  // Sortable tables
+  document.querySelectorAll('table.data-table th.sortable').forEach(th => {
+    th.addEventListener('click', () => {
+      const table = th.closest('table');
+      const tbody = table.tBodies[0];
+      const rows = Array.from(tbody.rows).filter(r => !r.classList.contains('child-row'));
+      const colIndex = Array.from(th.parentNode.children).indexOf(th);
+      const isExpandable = table.classList.contains('expandable');
+      const isAsc = !th.classList.contains('sort-asc');
+      table.querySelectorAll('th.sortable').forEach(t => t.classList.remove('sort-asc', 'sort-desc'));
+      th.classList.add(isAsc ? 'sort-asc' : 'sort-desc');
+
+      const getSortVal = (row) => {
+        const c = row.cells[colIndex];
+        if (!c) return '';
+        const ds = c.getAttribute('data-sort');
+        if (ds !== null) return parseFloat(ds);
+        return c.textContent.trim().toLowerCase();
+      };
+
+      rows.sort((a, b) => {
+        const av = getSortVal(a);
+        const bv = getSortVal(b);
+        if (av === bv) return 0;
+        const cmp = (typeof av === 'number' && typeof bv === 'number') ? (av - bv) : String(av).localeCompare(String(bv));
+        return isAsc ? cmp : -cmp;
+      });
+
+      if (isExpandable) {
+        rows.forEach(parent => {
+          tbody.appendChild(parent);
+          const btn = parent.querySelector('.toggle-btn');
+          if (btn) {
+            const gid = btn.dataset.target;
+            tbody.querySelectorAll('tr.child-row[data-group="' + gid + '"]').forEach(c => tbody.appendChild(c));
+          }
+        });
+      } else {
+        rows.forEach(r => tbody.appendChild(r));
+      }
+    });
+  });
+
+  // Expand/collapse subtopics
+  document.querySelectorAll('.toggle-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const gid = btn.dataset.target;
+      const children = document.querySelectorAll('tr.child-row[data-group="' + gid + '"]');
+      const collapsed = btn.textContent.trim() === '+';
+      children.forEach(c => c.classList.toggle('hidden', !collapsed));
+      btn.textContent = collapsed ? '−' : '+';
+      btn.setAttribute('aria-expanded', collapsed ? 'true' : 'false');
+    });
+  });
+
+  // Bulk collapse / expand all
+  document.querySelectorAll('.bulk-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tableId = btn.dataset.table;
+      const table = document.getElementById(tableId);
+      const allChildren = table.querySelectorAll('tr.child-row');
+      const anyVisible = Array.from(allChildren).some(c => !c.classList.contains('hidden'));
+      allChildren.forEach(c => c.classList.toggle('hidden', anyVisible));
+      table.querySelectorAll('.toggle-btn').forEach(b => {
+        b.textContent = anyVisible ? '+' : '−';
+        b.setAttribute('aria-expanded', anyVisible ? 'false' : 'true');
+      });
+      btn.textContent = anyVisible ? 'Expand all subtopics' : 'Collapse all subtopics';
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
